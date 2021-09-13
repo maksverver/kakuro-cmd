@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cstdlib>
 #include <cstdio>
 #include <ctime>
@@ -264,7 +265,7 @@ bool write_puzzle(std::ostream &os, const Grid &grid, const State &state, bool w
     }
     os << '\n';
 
-    return os;
+    return bool{os};
 }
 
 bool test(const State &s, int g, int m, int n, int used, int sum)
@@ -527,13 +528,13 @@ int main(int argc, char *argv[])
     bool failed = false;
     FOR(a, 1, argc) {
         std::string arg = argv[a];
-        if(mode == -1 && arg == "--solve" || arg == "-s")
+        if(mode == -1 && (arg == "--solve" || arg == "-s"))
             mode = 0;
         else
-        if(mode == -1 && arg == "--generate" || arg == "-g")
+        if(mode == -1 && (arg == "--generate" || arg == "-g"))
             mode = 1;
         else
-        if(mode == -1 && arg == "--cplex" || arg == "-c")
+        if(mode == -1 && (arg == "--cplex" || arg == "-c"))
             mode = 2;
         else
             failed = true;

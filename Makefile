@@ -1,3 +1,6 @@
-CXXFLAGS=-g -Wall -O0
+CXXFLAGS=-g -Wall -O2
 
 all: kakuro
+
+clean:
+	rm -f kakuro
